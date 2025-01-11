@@ -1,10 +1,10 @@
 com\BlogApp\Controllers\UserController.class
 com\BlogApp\Entities\User.class
-com\BlogApp\Payloads\UserDTO.class
 com\BlogApp\BlogAppApplication.class
+com\BlogApp\Exceptions\GlobalExceptionHandler.class
+com\BlogApp\Payloads\UserDTO.class
 com\BlogApp\Services\UserService.class
 com\BlogApp\Exceptions\ResourceNotFoundException.class
-com\BlogApp\Exceptions\GlobalExceptionHandler.class
 com\BlogApp\Services\impl\UserServiceImpl.class
 com\BlogApp\Repositories\UserRepo.class
 com\BlogApp\Payloads\ApiResponse.class
