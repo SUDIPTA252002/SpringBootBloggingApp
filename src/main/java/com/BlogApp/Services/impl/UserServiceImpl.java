@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.BlogApp.Entities.User;
 import com.BlogApp.Payloads.UserDTO;
-import com.BlogApp.Repositories.UserRepo;
+import com.BlogApp.Repositories.Mysql.UserRepo;
 import com.BlogApp.Services.UserService;
 import com.BlogApp.Exceptions.*;
 
