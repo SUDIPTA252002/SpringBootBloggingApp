@@ -53,9 +53,11 @@ public class User
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @Column(name="posts")
     @OneToMany(mappedBy="user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     List<Post> posts=new ArrayList<>();
+
+    @OneToMany(mappedBy = "user",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    List<Likes> likes=new ArrayList<>();
 
     @PrePersist
     protected void onCreate() 

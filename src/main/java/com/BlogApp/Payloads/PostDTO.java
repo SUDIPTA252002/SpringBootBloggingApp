@@ -1,5 +1,7 @@
 package com.BlogApp.Payloads;
 
+import java.util.List;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,5 +28,7 @@ public class PostDTO
     private CategoryDTO categoryDto;
 
     private UserDTO userDto;
+
+    private List<LikesDTO> likesDto;
     
 }

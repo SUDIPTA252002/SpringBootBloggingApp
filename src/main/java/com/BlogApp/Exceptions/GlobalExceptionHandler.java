@@ -24,6 +24,14 @@ public class GlobalExceptionHandler
         return new ResponseEntity<>(apiResponse,HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(AlreadyLikedException.class)
+    public ResponseEntity<ApiResponse> alreadyLiked(AlreadyLikedException ex)
+    {
+        String message=ex.message;
+        ApiResponse apiResponse=new ApiResponse(message,false);
+        return new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String,String>> handleValidExceptions(MethodArgumentNotValidException ex)
     {

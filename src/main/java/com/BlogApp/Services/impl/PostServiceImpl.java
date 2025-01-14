@@ -12,6 +12,7 @@ import com.BlogApp.Entities.Post;
 import com.BlogApp.Entities.User;
 import com.BlogApp.Exceptions.ResourceNotFoundException;
 import com.BlogApp.Payloads.CategoryDTO;
+import com.BlogApp.Payloads.LikesDTO;
 import com.BlogApp.Payloads.PostDTO;
 import com.BlogApp.Payloads.UserDTO;
 import com.BlogApp.Repositories.Mysql.CategoryRepo;
@@ -48,6 +49,7 @@ public class PostServiceImpl implements PostService
         PostDTO createdPost=this.PostToDto(savedPost);
         createdPost.setCategoryDto(this.modelMapper.map(savedPost.getCategory(),CategoryDTO.class));
         createdPost.setUserDto(this.modelMapper.map(savedPost.getUser(), UserDTO.class));
+        //createdPost.setLikesDto(this.modelMapper.map(savedPost.getLikes(),LikesDTO.class));
         return createdPost;
     }
 
@@ -58,6 +60,17 @@ public class PostServiceImpl implements PostService
         PostDTO postDto=this.PostToDto(post);
         postDto.setCategoryDto(this.modelMapper.map(post.getCategory(),CategoryDTO.class));
         postDto.setUserDto(this.modelMapper.map(post.getUser(),UserDTO.class));
+
+        List<LikesDTO> likesDTOs=post.getLikes()
+                                .stream()
+                                .map(like->{LikesDTO likesDto=this.modelMapper.map(like,LikesDTO.class);
+                                likesDto.setUserDTO(this.modelMapper.map(like.getUser(),UserDTO.class));
+                                    return likesDto;
+                                }
+                                )
+                                .collect(Collectors.toList());
+
+        postDto.setLikesDto(likesDTOs);
         return postDto;
         
     }
